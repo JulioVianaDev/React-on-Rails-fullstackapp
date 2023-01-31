@@ -1,0 +1,12 @@
+.buttonDelete{
+  color: red;
+  width: 48px;
+  background-color: rgba(45, 200, 18, 0);
+  border:0px;
+}
+.editarButton{
+  color: rgb(238, 231, 17);
+  width: 48px;
+  background-color: rgba(45, 200, 18, 0);
+  border: 0px;
+}

@@ -1,0 +1,23 @@
+.carro{
+  background-color: #D94A4A;
+  width: 25%;
+  margin: 30px;
+  min-height: 400px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.buttons-car{
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+}
+.itens{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
