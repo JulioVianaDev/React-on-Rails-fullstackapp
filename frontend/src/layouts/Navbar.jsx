@@ -2,30 +2,25 @@ import React from 'react'
 import './Navbar.css'
 import {Link} from 'react-router-dom'
 import { AuthConsumer } from '../providers/authProvider'
+import { LinkEstilizado,NavbarEstilizada } from '../styledComponents/styled'
 function Navbar({user,handleLogout}) {
   const rightNavItems = () => {
     // links to show up if the user is logged in
     if (user) {
       return (
-        <nav className="me-auto">
           <div onClick={() => handleLogout()}>
-            Logout
+            <LinkEstilizado>Deslogar</LinkEstilizado>
           </div>
-        </nav>
       )
     } else {
       // links to show up when they are not logged in
       return (
         <>
               <Link to='/login'>
-                <div className='link'>
-                  Login
-                </div>
+                <LinkEstilizado>Logar</LinkEstilizado>
               </Link>
               <Link to='/register'>
-                <div className='link'>
-                  Register
-                </div>
+                <LinkEstilizado>Registre-se</LinkEstilizado>
               </Link>
 
         </>
@@ -33,24 +28,21 @@ function Navbar({user,handleLogout}) {
     }
   }
   return (
-    <nav className='navbar'>
+    <NavbarEstilizada>
       <Link to='/'>
-        <div className='link'>
-          Página inicial
-        </div>
+        <LinkEstilizado> Página inicial</LinkEstilizado>
+      </Link>
+      <Link to='/galeria'>
+        <LinkEstilizado>Galeria de imagens</LinkEstilizado>
       </Link>
      <Link to='/cars'>
-        <div className='link'>
-          Verificar os carros
-        </div>
+       <LinkEstilizado>Cadastro de carros</LinkEstilizado>
       </Link>
      <Link to='/about'>
-        <div className='link'>
-          Desenvolvedor
-        </div>
+       <LinkEstilizado>Desenvolvedor</LinkEstilizado>
       </Link>
       { rightNavItems() }
-    </nav>
+    </NavbarEstilizada>
   )
 }
 const ConnectedNavbar=  ( props)=>(

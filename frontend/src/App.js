@@ -9,6 +9,8 @@ import About from './layouts/About'
 import Erro from './components/Erro/Erro'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Galeria from './layouts/Galeria'
+import './index.css'
 function App() {
   const [cars,setCars] = useState([])
   useEffect(()=>{
@@ -22,7 +24,7 @@ function App() {
       .then(res=>{
         setCars([...cars,res.data])
       })
-      .catch(err=> console.log("erro ao adicionar um carro: ",car))
+      .catch(err=> console.log("erro ao adicionar um carro: ",err))
   }
 
   const editCar = (id,car)=>{
@@ -38,7 +40,7 @@ function App() {
       })
       .catch(err=>console.log("erro ao editar o carro: ",err))
   }
-
+ 
   const deleteCar=(id)=>{
     axios.delete(`http://localhost:3001/api/cars/${id}`)
       .then(res=>{
@@ -46,11 +48,19 @@ function App() {
         alert(`o carro com o id ${id} `+ res.data.message)
       })
   }
+
+  const images = [
+    'https://picsum.photos/200/300',
+    'https://picsum.photos/200/301',
+    'https://picsum.photos/200/302',
+  ];
+
   return (
    <>
 
    <Navbar/>
    <Routes>
+    <Route path='/galeria' element={<Galeria images={images}/>}/>
     <Route path='/' element={<Inicial/>} />
     <Route path='/*' element={<Erro/>}/>
     <Route path='/about' element={<About/>}/>
