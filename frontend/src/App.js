@@ -2,6 +2,13 @@ import {useEffect,useState} from 'react'
 import axios from 'axios'
 import Cars from './components/Cars/Cars'
 import './App.css'
+import {Routes,Route} from 'react-router'
+import Inicial from './layouts/Inicial'
+import Navbar from './layouts/Navbar'
+import About from './layouts/About'
+import Erro from './components/Erro/Erro'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 function App() {
   const [cars,setCars] = useState([])
   useEffect(()=>{
@@ -41,7 +48,26 @@ function App() {
   }
   return (
    <>
-    <Cars   cars={cars} deleteCar={deleteCar} editCar={editCar} addCar={addCar}/>
+
+   <Navbar/>
+   <Routes>
+    <Route path='/' element={<Inicial/>} />
+    <Route path='/*' element={<Erro/>}/>
+    <Route path='/about' element={<About/>}/>
+    <Route path="/login" element={<Login/>}/>
+    <Route path="/register" element={<Register/>}/>
+
+    <Route path='/cars' element={ 
+                                  <Cars   
+                                    cars={cars} 
+                                    deleteCar={deleteCar} 
+                                    editCar={editCar} 
+                                    addCar={addCar}
+                                  />
+                                }   
+    />
+   </Routes>
+    
    </>
   );
 }
